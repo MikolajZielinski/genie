@@ -2,7 +2,7 @@ import bpy
 import os
 
 # Set output directory
-output_dir = "blender/ficus_leaf_wind/plys"  # Change this!
+output_dir = "blender/ficus/plys"  # Change this!
 
 # Ensure the output directory exists
 if not os.path.exists(output_dir):
