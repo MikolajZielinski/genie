@@ -16,7 +16,14 @@ Feel free to explore 🔍, clone the repo 📦, and start experimenting 🚀. Co
 </p>
 
 # ⚙️ Installation
+### Docker (preferred way)
+The easiest way to run our model is using the Docker container. Simply run the command below, and everything will be set up for you automatically.
+``` bash
+# Build, run and enter the container
+./docker/docker_run.sh
+```
 
+### Manual installation
 This project is developed as an extension for Nerfstudio. To get started, please install [Nerfstudio](https://github.com/nerfstudio-project/nerfstudio/tree/2adcc380c6c846fe032b1fe55ad2c960e170a215) along with its dependencies. <br>
 
 <p align="center">
@@ -58,6 +65,18 @@ To test if everything was installed properly, you can run the `ficus` demo. Plea
 ```bash
 # First train the model with
 ns-train genie --data data/ficus --timestamp genie_demo
+
+# Prepare the animation with blender
+blender -b blender/ficus/ficus.blend -P blender/ficus/script.py
+
+# Downscale and reformat animation
+genie-export ply-from-obj --batch-folder blender/ficus/plys --gausses-per-face 1 --output-folder outputs/ficus/genie/genie_demo/reference_meshes --ply-mode True
+
+# Export triangle soup
+genie-export triangles --load-config outputs/ficus/genie/genie_demo/config.yml
+
+# Bind triangle soup with animation and get final edits
+genie-export ply-from-edits --load-config outputs/ficus/genie/genie_demo/config.yml
 
 # Now you can render the animation
 genie-render dataset --load-config outputs/ficus/genie/genie_demo/config.yml --rendered-output-names rgb --output-path edits/genie_demo --selected-camera-idx 50
