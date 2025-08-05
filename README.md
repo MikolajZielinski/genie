@@ -17,7 +17,9 @@ Feel free to explore 🔍, clone the repo 📦, and start experimenting 🚀. Co
 
 # ⚙️ Installation
 ### Docker (preferred way)
-The easiest way to run our model is using the Docker container. Simply run the command below, and everything will be set up for you automatically.
+The easiest way to run our model is using the Docker container.
+First, install [OptiX SDK 8.1.0](https://developer.nvidia.com/designworks/optix/downloads/legacy) in `genie/knn` directory. 
+Then simply run the command below, and everything will be set up for you automatically.
 ``` bash
 # Build, run and enter the container
 ./docker/docker_run.sh
