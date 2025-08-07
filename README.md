@@ -121,13 +121,13 @@ ns-train genie --data <path_to_dataset> \
 ```
 
 # Rendering results
-We use [Blender](https://www.blender.org) for generating our animations. It is important to generate for each frame of your animation an `*.ply` file containing modified Gaussians obtained from the training. You can find them in the output foledr of your training under the name `step-<num_steps>_means.ply`. 
+We use [Blender](https://www.blender.org) for generating our animations. It is important to generate for each frame of your animation an `*.ply` file containing modified Gaussians obtained from the training. You can find them in the output folder of your training under the name `step-<num_steps>_means.ply`. 
 
 > ⚠️  It is very important to use only `*.ply` files since they don't change the order of vertices upon the save.
 
-In the output folder of your trained model (usually named wit the timestamp) create `camera_path` folder and put your `*.ply` filed there. It is important to name them `00000.ply`, `00001.ply`, `00002.ply`, etc.
+In the output folder of your trained model (usually named with the timestamp) create `camera_path` folder and put your `*.ply` file there. It is important to name them `00000.ply`, `00001.ply`, `00002.ply`, etc.
 
-Now you are ready to go and you can start rednerin. You have two option right here:
+Now you are ready to go and you can start rednering. You have two options right here:
 ### Dataset Render
 ``` bash
 genie-render dataset \
@@ -152,7 +152,7 @@ genie-render camera-path \
 # Driving Gausses with a mesh
 First thing that you need to do is to export the traingle soup from the model. We got you right there and we have prepared this command:
 ``` bash
-genie-export --load-config outputs/<path_to_your_config.yml>
+genie-export triangles --load-config outputs/<path_to_your_config.yml>
 ```
 This will create a traingle soup in the project output folder. In this output folder create another folder called `reference_meshes` put the edits of your Gausses in this folder in the same format as for rendering. Now this is important. Make sure that `triangle_soup.ply` and `00000.ply` represent your model in the exact same state (no modifications) since we will use those two as a reference. Other `*.ply` files can be in any configuration.
 
@@ -163,7 +163,7 @@ genie-export ply-from-edits --load-config outputs/<path_to_your_config.yml>
 This will drive the Gausses and will create `camera_path` folder. Now you can proceed to normal rendering mentioned above.
 
 # Replicating results from the paper
-If you want to replicate the results that we showed in the paper you can download our `.blend` filed from [here]. You will also find there all the config files we have used for training so you can use same hyperparameters as we did. There you will also find instructions on how to generate all `*.ply` fiels and how to render all animations.
+If you want to replicate the results that we showed in the paper you can download our `.blend` file from [here]. You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. There you will also find instructions on how to generate all `*.ply` files and how to render all animations.
 
 # Bugs in nerfstudio 1.1.4
 
