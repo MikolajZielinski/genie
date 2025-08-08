@@ -62,7 +62,15 @@ If you want to experiment 🧪 with different KNN algorithms you can install [Fa
 Also, uncomment the Faiss import and two KNN classes in `genie/knn/knn_algorithms.py` to enable it. Then in `genie_config.py` you can specify different KNN.
 
 # Running the demo
-To test if everything was installed properly, you can run the `ficus` demo. Please download the data from [here] and put it in data folder.
+To test if everything was installed properly, you can run the `ficus` demo.
+First download the demo dataset.
+
+```bash
+git lfs install
+git clone https://huggingface.co/datasets/MikolajZ/genie_demo_data
+```
+
+Place the `data` and `blender` folder into `genie`.
 
 ```bash
 # First train the model with
@@ -100,6 +108,14 @@ cd <dataset_folder>
 ns-process-data images --data . --output-dir . --skip-colmap --skip-image-processin --colmap-model-path sparse/0
 ```
 Like with synthetic data, you'll also need to place `sparse_pc.ply` in the dataset folder to initialize the network with a sparse point cloud.
+
+### Replicating results from the paper
+If you want to replicate the results that we showed in the paper you can download all our datasets with:
+```bash
+git lfs install
+git clone https://huggingface.co/datasets/MikolajZ/genie_data
+```
+You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. In dataset `README.md` you will find the description of the dataset conntent.
 
 # Training the network
 
@@ -162,9 +178,6 @@ genie-export ply-from-edits --load-config outputs/<path_to_your_config.yml>
 ```
 This will drive the Gausses and will create `camera_path` folder. Now you can proceed to normal rendering mentioned above.
 
-# Replicating results from the paper
-If you want to replicate the results that we showed in the paper you can download our `.blend` file from [here]. You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. There you will also find instructions on how to generate all `*.ply` files and how to render all animations.
-
 # Bugs in nerfstudio 1.1.4
 
 There were a few bugs in nerfstudio we needed to fix in order to train on Mip-NeRF 360 dataset:
@@ -225,6 +238,14 @@ loaded_state = torch.load(load_path, map_location="cpu", weights_only=False)
 # Citations
 If you found this work usefull, please consider citing:
 
-```
-
+``` bibtex
+@misc{zielinski2025genie,
+  title     = {GENIE: Gaussian Encoding for Neural Radiance Fields Interactive Editing},
+  author    = {Miko\l{}aj Zieli\'{n}ski and Krzysztof Byrski and Tomasz Szczepanik and Przemys\l{}aw Spurek},
+  year      = {2025},
+  eprint    = {2508.02831},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url       = {https://arxiv.org/abs/2508.02831}
+}
 ```
