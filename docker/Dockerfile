@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     python3-pip \
     git \
+    git-lfs \
     ninja-build \
     cuda-toolkit=12.6.0-1 \
     && rm -rf /var/lib/apt/lists/*

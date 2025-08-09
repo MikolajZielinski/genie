@@ -1,5 +1,12 @@
 # GENIE: Gaussian Encoding for Neural Radiance Fields Interactive Editing
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2508.02831"><img src="https://img.shields.io/badge/arXiv-2508.02831-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://huggingface.co/datasets/MikolajZ/genie_demo_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Demo%20Data-yellow" alt="Demo Data"></a>
+  <a href="https://huggingface.co/datasets/MikolajZ/genie_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Full%20Datasets-yellow" alt="Full Datasets"></a>
+  <a href="https://mikolajzielinski.github.io/genie.github.io/"><img src="https://img.shields.io/badge/🌐-Project%20Page-blue" alt="Project Page"></a>
+</p>
+
 👋 Hi there!  
 If you’ve landed here looking to **edit NeRFs** (Neural Radiance Fields) you’re in the right place. This project lets you 🛠️ interactively modify NeRF scenes with ease.  
 Feel free to explore 🔍, clone the repo 📦, and start experimenting 🚀. Contributions, issues, and ideas are always welcome! 💡✨
@@ -77,7 +84,7 @@ Place the `data` and `blender` folder into `genie`.
 ns-train genie --data data/ficus --timestamp genie_demo
 
 # Prepare the animation with blender
-blender -b blender/ficus/ficus.blend -P blender/ficus/script.py
+blender -b blender/ficus/Ficus.blend -P blender/ficus/script.py
 
 # Downscale and reformat animation
 genie-export ply-from-obj --batch-folder blender/ficus/plys --gausses-per-face 1 --output-folder outputs/ficus/genie/genie_demo/reference_meshes --ply-mode True
@@ -115,7 +122,7 @@ If you want to replicate the results that we showed in the paper you can downloa
 git lfs install
 git clone https://huggingface.co/datasets/MikolajZ/genie_data
 ```
-You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. In dataset `README.md` you will find the description of the dataset conntent.
+You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. In [dataset `README.md`](https://huggingface.co/datasets/MikolajZ/genie_data) you will find the description of the dataset content and tips for training the models.
 
 # Training the network
 
@@ -177,63 +184,6 @@ Now run the script:
 genie-export ply-from-edits --load-config outputs/<path_to_your_config.yml>
 ```
 This will drive the Gausses and will create `camera_path` folder. Now you can proceed to normal rendering mentioned above.
-
-# Bugs in nerfstudio 1.1.4
-
-There were a few bugs in nerfstudio we needed to fix in order to train on Mip-NeRF 360 dataset:
-
-File: nerfstudio/exporter/exporter_utils.py
-
-``` python
-# Lines 166-172
-
-# Change from:
-if crop_obb is not None:
-    mask = crop_obb.within(point)
-point = point[mask]
-rgb = rgb[mask]
-view_direction = view_direction[mask]
-if normal is not None:
-    normal = normal[mask]
-
-# To:
-if crop_obb is not None:
-    mask = crop_obb.within(point)
-    point = point[mask]
-    rgb = rgb[mask]
-    view_direction = view_direction[mask]
-    if normal is not None:
-        normal = normal[mask]
-
-```
-
-File: nerfstudio/model_components/ray_generators.py
-
-``` python
-# Lines 49-50
-
-# Change from:
-y = ray_indices[:, 1]  # row indices
-x = ray_indices[:, 2]  # col indices
-
-# To:
-y = torch.clamp(ray_indices[:, 1], 0, self.image_coords.shape[0] - 1)  # row indices
-x = torch.clamp(ray_indices[:, 2], 0, self.image_coords.shape[1] - 1)  # col indices
-
-```
-
-File: nerfstudio/utils/eval_utils.py
-
-``` python
-# Line 62
-
-# Change from:
-loaded_state = torch.load(load_path, map_location="cpu")
-
-# To:
-loaded_state = torch.load(load_path, map_location="cpu", weights_only=False)
-
-```
 
 # Citations
 If you found this work usefull, please consider citing:
