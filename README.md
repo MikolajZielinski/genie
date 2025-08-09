@@ -107,14 +107,7 @@ ffmpeg -framerate 24 -i %05d.jpg -c:v libx264 -pix_fmt yuv420p ficus_wind.mp4
 By default, our method supports the NeRF Synthetic format. If you want to use your own data you need to put `sparse_pc.ply` in the dataset folder. For synthetic data we used [LagHash](https://github.com/theialab/lagrangian_hashes) to generate the initial point cloud but COLMAP sparse point cloud works just as fine if you don't want to train another model.
 
 ### Real data
-For real data please follow [Nerfstudio data format](https://docs.nerf.studio/quickstart/data_conventions.html)
-To use the MiP-NeRF 360 dataset, you'll need to generate a `transforms.json` file for each scene:
-``` bash
-# Do this for every dataset in the folder
-cd <dataset_folder>
-ns-process-data images --data . --output-dir . --skip-colmap --skip-image-processin --colmap-model-path sparse/0
-```
-Like with synthetic data, you'll also need to place `sparse_pc.ply` in the dataset folder to initialize the network with a sparse point cloud.
+For real data please follow [Nerfstudio data format](https://docs.nerf.studio/quickstart/data_conventions.html). Like with synthetic data, you'll also need to place `sparse_pc.ply` in the dataset folder to initialize the network with a sparse point cloud.
 
 ### Replicating results from the paper
 If you want to replicate the results that we showed in the paper you can download all our datasets with:
