@@ -177,18 +177,3 @@ Now run the script:
 genie-export ply-from-edits --load-config outputs/<path_to_your_config.yml>
 ```
 This will drive the Gausses and will create `camera_path` folder. Now you can proceed to normal rendering mentioned above.
-
-# Citations
-If you found this work usefull, please consider citing:
-
-``` bibtex
-@misc{zielinski2025genie,
-  title     = {GENIE: Gaussian Encoding for Neural Radiance Fields Interactive Editing},
-  author    = {Miko\l{}aj Zieli\'{n}ski and Krzysztof Byrski and Tomasz Szczepanik and Przemys\l{}aw Spurek},
-  year      = {2025},
-  eprint    = {2508.02831},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CV},
-  url       = {https://arxiv.org/abs/2508.02831}
-}
-```
