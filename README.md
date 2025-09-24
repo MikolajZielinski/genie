@@ -1,7 +1,6 @@
 # GENIE: Gaussian Encoding for Neural Radiance Fields Interactive Editing
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2508.02831"><img src="https://img.shields.io/badge/arXiv-2508.02831-b31b1b.svg" alt="arXiv"></a>
   <a href="https://huggingface.co/datasets/MikolajZ/genie_demo_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Demo%20Data-yellow" alt="Demo Data"></a>
   <a href="https://huggingface.co/datasets/MikolajZ/genie_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Full%20Datasets-yellow" alt="Full Datasets"></a>
   <a href="https://mikolajzielinski.github.io/genie.github.io/"><img src="https://img.shields.io/badge/🌐-Project%20Page-blue" alt="Project Page"></a>
