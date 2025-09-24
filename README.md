@@ -1,11 +1,4 @@
 # GENIE: Gaussian Encoding for Neural Radiance Fields Interactive Editing
-
-<p align="center">
-  <a href="https://huggingface.co/datasets/MikolajZ/genie_demo_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Demo%20Data-yellow" alt="Demo Data"></a>
-  <a href="https://huggingface.co/datasets/MikolajZ/genie_data"><img src="https://img.shields.io/badge/🤗%20HuggingFace-Full%20Datasets-yellow" alt="Full Datasets"></a>
-  <a href="https://mikolajzielinski.github.io/genie.github.io/"><img src="https://img.shields.io/badge/🌐-Project%20Page-blue" alt="Project Page"></a>
-</p>
-
 👋 Hi there!  
 If you’ve landed here looking to **edit NeRFs** (Neural Radiance Fields) you’re in the right place. This project lets you 🛠️ interactively modify NeRF scenes with ease.  
 Feel free to explore 🔍, clone the repo 📦, and start experimenting 🚀. Contributions, issues, and ideas are always welcome! 💡✨
@@ -114,7 +107,7 @@ If you want to replicate the results that we showed in the paper you can downloa
 git lfs install
 git clone https://huggingface.co/datasets/MikolajZ/genie_data
 ```
-You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. In [dataset `README.md`](https://huggingface.co/datasets/MikolajZ/genie_data) you will find the description of the dataset content and tips for training the models.
+You will also find there all the config files we have used for training so you can use the same hyperparameters as we did. In [dataset `README.md`]() you will find the description of the dataset content and tips for training the models.
 
 # Training the network
 
