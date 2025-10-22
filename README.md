@@ -25,7 +25,8 @@ Feel free to explore 🔍, clone the repo 📦, and start experimenting 🚀. Co
 # ⚙️ Installation
 ### Docker (preferred way)
 The easiest way to run our model is using the Docker container.
-First, install [OptiX SDK 8.1.0](https://developer.nvidia.com/designworks/optix/downloads/legacy) in `genie/knn` directory. 
+First, install [OptiX SDK 8.1.0](https://developer.nvidia.com/designworks/optix/downloads/legacy) in `genie/knn` directory. <br>
+Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html). <br>
 Then simply run the command below, and everything will be set up for you automatically.
 ``` bash
 # Build, run and enter the container
@@ -70,8 +71,8 @@ Also, uncomment the Faiss import and two KNN classes in `genie/knn/knn_algorithm
 
 # Running the demo
 To test if everything was installed properly, you can run the `ficus` demo.
-First download the demo dataset.
-
+First, download the demo dataset.
+Install [Git LFS](https://git-lfs.com/) 
 ```bash
 git lfs install
 git clone https://huggingface.co/datasets/MikolajZ/genie_demo_data
