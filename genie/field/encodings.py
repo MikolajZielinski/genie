@@ -253,6 +253,9 @@ class SplashEncoding(nn.Module):
             pad_means = torch.cat([self.means, sigma_max.unsqueeze(-1)], dim=1)
             self.knn.fit(pad_means)
             nearest_gausses_indicies, self.distances = self.knn.get_nearest_neighbours(coords)
+            max_idx = self.means.shape[0] - 1
+            nearest_gausses_indicies = torch.clamp(nearest_gausses_indicies, min=0, max=max_idx)
+
         slpash_feats = self.interpolate(coords, nearest_gausses_indicies)
 
         if self.empty_as_hash:
