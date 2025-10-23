@@ -49,7 +49,7 @@ This project is developed as an extension for Nerfstudio. To get started, please
 </p>
 
 
-Install [OptiX SDK 8.1.0](https://developer.nvidia.com/designworks/optix/downloads/legacy) in `genie/knn` directory.
+Install [OptiX SDK 8.1.0](https://developer.nvidia.com/designworks/optix/downloads/legacy) in `genie/genie/knn` directory.
 Then build the CUDA code by running:
 ``` bash
 ./build_optix.sh
